@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DynoSurf: Neural Deformation-based Temporally Consistent Dynamic Surface Reconstruction">
+  <meta name="keywords" content="Dynamic Surface Reconstruction, Temporally Consistent Meshes, Low-Dimensional Deformation, Point Cloud Sequences">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+  <title>DynoSurf: Neural Deformation-based Temporally Consistent Dynamic Surface Reconstruction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DynoSurf: Neural Deformation-based Temporally Consistent Dynamic Surface Reconstruction</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yaoyx689.github.io/">Yuxin Yao</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Siyu Ren</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/junhuihoushomepage/">Junhui Hou</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="">Zhi Deng</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="http://staff.ustc.edu.cn/~juyong/">Juyong Zhang</a><sup>3</sup>
+            </span>
+            <span class="author-block">
+              <a href="">Wenping Wang</a><sup>4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> City University of Hong Kong,</span>
+            <span class="author-block"><sup>2</sup> Tencent Games,</span>
+            <span class="author-block"><sup>3</sup> University of Science and Technology of China,</span>
+            <span class="author-block"><sup>4</sup> Texas A&M University,</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.11586" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yaoyx689/DynoSurf" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper explores the problem of reconstructing temporally consistent surfaces from a 3D point cloud sequence without correspondence. To address this challenging task, we propose DynoSurf, an unsupervised learning framework integrating a template surface representation with a learnable deformation field. Specifically, we  design a coarse-to-fine strategy for learning the template surface based on the deformable tetrahedron representation. Furthermore, we propose a learnable deformation representation based on the learnable control points and blending weights, which can deform the template surface non-rigidly while maintaining the consistency of the local shape. Experimental results demonstrate the significant superiority of DynoSurf over current state-of-the-art approaches, showcasing its potential as a powerful tool for dynamic mesh reconstruction. The code is publicly available at https://github.com/yaoyx689/DynoSurf. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item item-dfaust">
+              <video poster="" id="dfaust" autoplay controls muted loop playsinline height="100%">
+                <source src="./videos/dfaust.gif"
+                        type="video/gif">
+              </video>
+            </div>
+            <div class="item item-deer">
+              <video poster="" id="deer" autoplay controls muted loop playsinline>
+                <source src="./videos/dt4d_deer.gif"
+                        type="video/gif">
+              </video>
+            </div>
+            <div class="item item-fox">
+              <video poster="" id="fox" autoplay controls muted loop playsinline height="100%">
+                <source src="./videos/dt4d_fox.gif"
+                        type="video/gif">
+              </video>
+            </div>
+            <div class="item item-swing">
+              <video poster="" id="swing" autoplay controls muted loop playsinline height="100%" width="100%">
+                <source src="./videos/ama_swing.gif"
+                        type="video/gif">
+              </video>
+            </div>
+            <div class="item item-crane">
+              <video poster="" id="crane" autoplay controls muted loop playsinline height="100%" width="100%">
+                <source src="./videos/ama_crane.gif"
+                        type="video/gif">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Video</h2>
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./videos/intro_demo.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{yao2024dynosurf,
+  author    = {Yao, Yuxin and Ren, Siyu and Hou, Junhui and Deng, Zhi and Zhang, Juyong and Wang, Wenping},
+  title     = {DynoSurf: Neural Deformation-based Temporally Consistent Dynamic Surface Reconstruction},
+  journal   = {Arxiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <p>
+          This website is licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want to reuse their <a
+        href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+      </p>
+    </div>
+  </div>
+  </div>
+</footer>
+
+</body>
+</html>
