@@ -118,7 +118,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-        <img alt="html image example" src="./DynoSurf_videos/teaser.jpg"  />
+        <img alt="html image example" src="./dynosurf_materials/teaser.jpg"  />
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">DynoSurf</span> turns a 3D point cloud sequence into temporally consistent surfaces.
       </h2>
@@ -141,45 +141,46 @@
     </div>
     <!--/ Abstract. -->
 
-    <section class="hero is-light is-small">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <div id="results-carousel" class="carousel results-carousel">
-            <div class="item item-dfaust">
-              <video poster="" id="dfaust" autoplay controls muted loop playsinline height="100%">
-                <source src="./DynoSurf_videos/dfaust.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-deer">
-              <video poster="" id="deer" autoplay controls muted loop playsinline height="100%">
-                <source src="./DynoSurf_videos/dt4d_deer.mp4"
-                        type="video/mp4">
-              </video>
-            </div> 
-            <div class="item item-mask">
-              <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-                <source src="./DynoSurf_videos/ama_crane.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-          </div>
+    <section class="container">
+      <div class="container is-max-desktop">
+        <center><h2 class="title is-3">Method</h2></center>
+        <div class="hero-body">
+            <img src="./dynosurf_materials/pipeline.jpg">
+          <center><h5><div>Illustration of the proposed DynoSurf, which can reconstruct from time-varying point cloud sequences temporally-consistent dynamic surfaces without requiring any ground-truth surface and temporal correspondence information.</div><h5> </center>
         </div>
       </div>
     </section>
 
-<!--     
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Video</h2>
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./videos/intro_demo.mp4"
-                type="video/mp4">
-      </video>
-    </div>
+
+    <section>
+      <div class="container">
+        <center><h2 class="title is-3">Results</h2>
+          <div class="row">
+              <div class="col-12 text-center" id="pipeline">
+                <img src='dynosurf_materials/dfaust.gif' width=80% allowfullscreen="" controls="">
+                <img src='dynosurf_materials/dt4d_deer.gif' width=80% allowfullscreen="" controls="">
+                <img src='dynosurf_materials/ama_crane.gif' width=80% allowfullscreen="" controls="">
+                <h5><div></div><h5></h5>
+              </div>
+          </div>
+        </center>
+      </div>
+  </section>
+
+  <div class="content has-text-centered">
+    <center><h2 class="title is-3">Video</h2></center>
+    <video id="replay-video"
+           autoplay
+           controls
+           muted
+           preload
+           playsinline
+           loop
+           width="100%">
+      <source src="./dynosurf_materials/DynoSurf_video.mp4"
+              type="video/mp4">
+    </video>
   </div>
-</section> -->
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
