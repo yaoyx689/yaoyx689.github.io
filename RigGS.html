@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="RigGS: Rigging of 3D Gaussians for Modeling Articulated Objects in Videos">
+  <meta name="keywords" content="3D Gaussian Splatting, Rigging, Videos">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RigGS: Rigging of 3D Gaussians for Modeling Articulated Objects in Videos</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RigGS: Rigging of 3D Gaussians for Modeling Articulated Objects in Videos</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yaoyx689.github.io/">Yuxin Yao</a><sup>1</sup>,</span>
+            <span class="author-block">
+              Zhi Deng<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/junhuihoushomepage/">Junhui Hou</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> City University of Hong Kong,</span>
+            <span class="author-block"><sup>2</sup> University of Science and Technology of China,</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/xxx" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/yaoyx689/RigGS" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <img alt="html image example" src="./riggs_materials/teaser.png"  />
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">RigGS</span> automatically modeling articulated objects from 2D videos without any template
+        prior.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper considers the problem of modeling articulated objects captured in 2D videos to enable novel view synthesis, while also being easily editable, drivable, and re-posable. To tackle this challenging problem, we propose RigGS, a new paradigm that leverages 3D Gaussian representation and skeleton-based motion representation to model dynamic objects without utilizing additional template priors. Specifically, we first propose skeleton-aware node-controlled deformation, which deforms a canonical 3D Gaussian representation over time to initialize the modeling process, producing candidate skeleton nodes that are further simplified into a sparse 3D skeleton according to their motion and semantic information. Subsequently, based on the resulting skeleton, we design learnable skin deformations and pose-dependent detailed deformations, thereby easily deforming the 3D Gaussian representation to generate new actions and render further high-quality images from novel views. Extensive experiments demonstrate that our method can generate realistic new actions easily for objects and achieve high-quality rendering. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <section class="container">
+      <div class="container is-max-desktop">
+        <center><h2 class="title is-3">Method</h2></center>
+        <div class="hero-body">
+            <img src="./riggs_materials/pipeline.png">
+          <center><h5><div>Illustration of the proposed RigGS, which can reconstruct articulated objects from videos and allow for easy editing and interpolation of object motion while supporting high-quality real-time rendering for these creative poses.</div><h5> </center>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- <section>
+      <div class="container">
+        <center><h2 class="title is-3">Results</h2>
+          <div class="row">
+              <div class="col-12 text-center" id="pipeline">
+                <img src='dynosurf_materials/dfaust.gif' width=80% allowfullscreen="" controls="">
+                <img src='dynosurf_materials/dt4d_deer.gif' width=80% allowfullscreen="" controls="">
+                <img src='dynosurf_materials/ama_crane.gif' width=80% allowfullscreen="" controls="">
+                <h5><div></div><h5></h5>
+              </div>
+          </div>
+        </center>
+      </div>
+  </section> -->
+
+  <div class="content has-text-centered">
+    <center><h2 class="title is-3">Video</h2></center>
+    <video id="replay-video"
+           autoplay
+           controls
+           muted
+           preload
+           playsinline
+           loop
+           width="100%">
+      <source src="./riggs_materials/riggs_video.mp4"
+              type="video/mp4">
+    </video>
+  </div>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{yao2025riggs,
+  author    = {Yao, Yuxin and Deng, Zhi and Hou, Junhui},
+  title     = {RigGS: Rigging of 3D Gaussians for Modeling Articulated Objects in Videos},
+  booktitle  = {CVPR},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+      <p>
+        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want to reuse their <a
+        href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+      </p>
+    </div>
+  </div>
+  </div>
+</footer>
+
+</body>
+</html>
