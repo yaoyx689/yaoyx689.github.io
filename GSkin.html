@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="G-Skin: Learning to Bind 3D Gaussians with Generative Visual Priors">
+  <meta name="keywords" content="3D Gaussian Splatting, Rigging, Skinning, Animation, Generative Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G-Skin: Learning to Bind 3D Gaussians with Generative Visual Priors</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Bulma / Nerfies template -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- Custom styles for G-Skin -->
+  <style>
+    /* ---- Color palette ---- */
+    :root {
+      --gs-primary: #2d3e8f;
+      --gs-accent: #4a6cf7;
+      --gs-light: #f0f3ff;
+      --gs-dark: #1a1a2e;
+      --gs-gold: #e8b830;
+    }
+
+    /* Hero / title area */
+    .publication-title {
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+    .publication-title span.gskin-logo {
+      background: linear-gradient(135deg, #4a6cf7, #6c3fc0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .publication-authors .author-block {
+      margin: 0 2px;
+    }
+    .publication-authors sup {
+      color: #888;
+      font-size: 0.7em;
+    }
+
+    /* Affiliation line */
+    .affiliation-line {
+      color: #666;
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
+
+    /* Link buttons */
+    .publication-links .button {
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+      font-weight: 500;
+      margin: 3px 4px;
+    }
+    .publication-links .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(74, 108, 247, 0.25);
+      border-color: var(--gs-accent);
+    }
+
+    /* Section titles */
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--gs-accent);
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Teaser image */
+    .teaser-img {
+      border-radius: 12px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.10);
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Caption text */
+    .caption-text {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Abstract block */
+    .abstract-block {
+      background: #fafbff;
+      border-left: 4px solid var(--gs-accent);
+      padding: 1.5rem 2rem;
+      border-radius: 0 12px 12px 0;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    /* Highlight / feature cards */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .feature-card {
+      background: white;
+      border: 1px solid #e8e8f0;
+      border-radius: 12px;
+      padding: 1.5rem 1.2rem;
+      flex: 1 1 220px;
+      max-width: 280px;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      border-color: var(--gs-accent);
+    }
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.6rem;
+    }
+    .feature-card h4 {
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--gs-dark);
+    }
+    .feature-card p {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Pipeline image */
+    .pipeline-img {
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Video wrapper */
+    .video-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.12);
+    }
+    .video-wrapper video {
+      display: block;
+      width: 100%;
+    }
+
+    /* BibTeX */
+    .bibtex-block {
+      background: #f5f5fa;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.88rem;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.6;
+      color: #2d2d2d;
+    }
+    .bibtex-block code {
+      background: none;
+      padding: 0;
+    }
+
+    /* Results grid */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .results-grid .result-item {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      background: white;
+    }
+    .results-grid .result-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .results-grid video,
+    .results-grid img {
+      width: 100%;
+      display: block;
+    }
+    .results-grid .result-label {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      color: #555;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Comparison table */
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 8px;
+      margin-top: 0.5rem;
+    }
+    .compare-table th {
+      text-align: center;
+      font-weight: 700;
+      padding: 0.5rem;
+      color: #444;
+      font-size: 0.9rem;
+    }
+    .compare-table td {
+      text-align: center;
+      padding: 0.5rem;
+      vertical-align: top;
+      font-size: 0.85rem;
+      color: #555;
+    }
+    .compare-table .ours-cell {
+      color: var(--gs-accent);
+      font-weight: 700;
+    }
+
+    /* News banner */
+    .news-banner {
+      background: linear-gradient(135deg, #fef9e7, #fdebd0);
+      border: 1px solid #f0d78c;
+      border-radius: 10px;
+      padding: 0.8rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.92rem;
+      color: #7d6608;
+    }
+    .news-banner strong {
+      color: #b8860b;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .feature-grid { flex-direction: column; align-items: center; }
+      .feature-card { max-width: 100%; }
+      .abstract-block { padding: 1rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Header / Title ====== -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <!-- News -->
+          <!-- <div class="news-banner">
+            <strong>News:</strong> Our paper has been accepted to XXX 2025. Code and weights coming soon!
+          </div> -->
+
+          <h1 class="title is-1 publication-title">
+            <span class="gskin-logo">G-Skin</span>: Learning to Bind 3D Gaussians<br>with Generative Visual Priors
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Yuxin Yao<sup>1</sup>,</span>
+            <span class="author-block">Kendong Liu<sup>1</sup>,</span>
+            <span class="author-block">Shiqi Zhou<sup>2</sup>,</span>
+            <span class="author-block">Jiazhi Xia<sup>3</sup>,</span>
+            <span class="author-block">Junhui Hou<sup>1</sup></span>
+          </div>
+
+          <div class="affiliation-line">
+            <sup>1</sup> City University of Hong Kong &nbsp;&nbsp;
+            <sup>2</sup> Central Media Technology Institute, Huawei &nbsp;&nbsp;
+            <sup>3</sup> Central South University
+          </div>
+
+          <div class="column has-text-centered" style="margin-top: 1.5rem;">
+            <div class="publication-links">
+              <!-- PDF / arXiv -->
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Demo Video -->
+              <span class="link-block">
+                <a href="./gskin_materials/video_demo.mp4" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-video"></i></span>
+                  <span>Demo Video</span>
+                </a>
+              </span>
+              <!-- User Study -->
+              <span class="link-block">
+                <a href="./gskin_materials/user_study.html" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fa fa-users"></i></span>
+                  <span>User Study (Videos)</span>
+                </a>
+              </span>
+              <!-- Code -->
+              <span class="link-block">
+                <a href="" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code (Coming Soon)</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Teaser ====== -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 0;">
+      <center>
+        <img class="teaser-img" src="./gskin_materials/teaser.png" alt="G-Skin Teaser" style="width:95%; max-width:960px;" />
+      </center>
+      <p class="caption-text has-text-centered" style="max-width:800px; margin: 1.2rem auto 0;">
+        <b style="color:var(--gs-accent);">G-Skin</b> optimizes skinning weights for 3D Gaussians and a given skeleton
+        guided by a generative visual prior, while incorporating local geometric constraints to ensure
+        both realistic animation and minimized rendering artifacts.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Highlights ====== -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3 section-title">Key Features</h2></center>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#x1f3a8;</div>
+        <h4>Generative Prior Guidance</h4>
+        <p>Skeleton-controllable image generation leveraging 2D vision foundation models to distill motion priors.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1f9ec;</div>
+        <h4>3D Gaussian Skinning</h4>
+        <p>First framework to directly learn skinning weights on discrete 3D Gaussian primitives with arbitrary skeletons.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1f4d0;</div>
+        <h4>Geometry-Aware Regularization</h4>
+        <p>Local geometric constraints stabilize learning and ensure smooth, structurally coherent deformations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#x1f504;</div>
+        <h4>Generalizable Framework</h4>
+        <p>Flexibly extends to augmented 3D Gaussian variants to mitigate animation-induced rendering artifacts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Abstract ====== -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3 section-title">Abstract</h2></center>
+    <div class="abstract-block">
+      <p>
+        While 3D Gaussian Splatting has achieved remarkable success in photorealistic and efficient rendering,
+        rigging and animating objects with arbitrary skeleton topologies using this representation remains a
+        formidable task. Existing methods are mainly mesh-based technologies that cannot be directly applied to
+        discrete 3D Gaussian primitives. Moreover, no high-quality 3D Gaussian rigging datasets exist. Therefore,
+        we propose <b>G-Skin</b>, a novel generative skinning framework designed for expressive and high-fidelity
+        3D Gaussian animation. To circumvent this 3D data scarcity, we introduce a skeleton-controllable image
+        generation model leveraging 2D vision foundation models to distill powerful motion priors into pseudo-guidance.
+        Guided by these priors, we formulate an optimization pipeline constrained by geometry-aware regularizations,
+        which stabilizes the learning process and ensures smooth, structurally coherent skinning weights. G-Skin also
+        generalizes flexibly to the augmented variants of 3D Gaussian representation designed to mitigate
+        animation-induced rendering artifacts. Extensive experiments validate the effectiveness of our approach,
+        demonstrating clear advantages over state-of-the-art methods.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Pipeline ====== -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3 section-title">Pipeline</h2></center>
+    <div class="hero-body" style="padding-top: 0.5rem;">
+      <center>
+        <img class="pipeline-img" src="./gskin_materials/pipeline.jpg" alt="G-Skin Pipeline" style="width:100%; max-width:960px;" />
+      </center>
+      <p class="caption-text has-text-centered" style="max-width:800px; margin: 1rem auto 0;">
+        <b>Overview of G-Skin.</b> Given a 3D Gaussian representation and its corresponding skeleton,
+        a skeleton-controllable guidance generation module is first introduced to leverage generative priors
+        for producing guidance images. Subsequently, guided by these images, a robust learning framework
+        incorporating two geometric regularization terms is designed to learn motion-coherent skinning weights.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Video ====== -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3 section-title">Video</h2></center>
+    <div class="video-wrapper">
+      <video id="replay-video" autoplay controls muted preload playsinline loop>
+        <source src="./gskin_materials/video_demo.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Results / Comparison (placeholder) ====== -->
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3 section-title">Results &amp; Comparisons</h2></center>
+    <div class="results-grid">
+      <div class="result-item">
+        <img src="./gskin_materials/results/example1.gif" alt="Result 1" />
+        <div class="result-label">G-Skin animation result on example 1</div>
+      </div>
+      <div class="result-item">
+        <img src="./gskin_materials/results/example2.gif" alt="Result 2" />
+        <div class="result-label">G-Skin animation result on example 2</div>
+      </div>
+      <div class="result-item">
+        <img src="./gskin_materials/results/example3.gif" alt="Result 3" />
+        <div class="result-label">G-Skin animation result on example 3</div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ====== Footer ====== -->
+<footer class="footer" style="background: #fafafa; margin-top: 2rem;">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content has-text-centered" style="font-size:0.85rem; color:#888;">
+        <p>
+          Website template based on the <a href="https://nerfies.github.io/">Nerfies</a> project page.
+          If you reuse their <a href="https://github.com/nerfies/nerfies.github.io">source code</a>,
+          please credit them appropriately.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

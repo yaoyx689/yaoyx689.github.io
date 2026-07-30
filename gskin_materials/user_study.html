@@ -1,0 +1,758 @@
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight:300;
+		font-size:18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>G-Skin: Learning to Bind 3D Gaussians with Generative Visual Priors</title>
+	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="G-Skin: Learning to Bind 3D Gaussians with Generative Visual Priors" />
+	<meta property="og:description" content="Paper description." />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:32px">G-Skin: Learning to Bind 3D Gaussians with Generative Visual Priors</span>
+		<table align=center width=600px>
+        
+		</table>
+	</center>
+    
+    <h3><a href='../GSkin.html'>[Back]</a></hr>
+
+<br>
+
+<table align=center width=850px>
+    <tr>
+        <td style="text-align:left; font-size:18px;">
+            Here, we present all 20 videos used in the user study (10 humanoid and 10 non-humanoid). The complete questionnaire can be found at <a href="https://forms.gle/XdY63HKigs5tnU4B6">this link</a>, with the order of methods randomized for each example.
+        </td>
+    </tr>
+</table>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 1
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/boy2_HipHopDancing3.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+                <td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 2
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/OtterSailor2_MmaKick2.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+				 &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+				</td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 3
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/fox1_WaveHipHopDance.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 4
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/gaoda1_JumpingJacks.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 5
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/guaishou2_Run.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 6
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/gui1_JazzDancing.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 7
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/man_wing_JazzDancing.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 8
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/MechanicalGolem_SambaDancing.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+<br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 9
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/robot_Victory.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Humanoid: 10
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/ToonIceCreamGolem_Victory.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    MIA&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 1
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/cartoonhorse2_s9.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 2
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/duck3_s3.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 3 
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/dinosaur1_s1.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+	
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 4
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/haima2_s3.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 5
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/kangaroo_s3.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+	
+    
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 6
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/koala_s4.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 7
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/legolion_s7.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 8
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/plushbear_s9.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 9
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/swan3_s3.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+    <br>
+	<center>
+        <table align=center width=850px>
+			<tr>
+                <td style="text-align:left; font-size:18px;">
+                    Non-Humanoid: 10
+                </td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td width=850px>
+                         <img src="./user_study_videos/tigernew_s9.gif" width="100%" style="float: left;">
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td style="text-align:center; font-size:18px;">
+                    &emsp;&emsp;&emsp;
+                    UniRig &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    Puppeteer &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                    G-Skin (Ours)
+                </td>
+			</tr>
+		</table>
+	</center>
+	<hr>
+
+</body>
+</html>
+
