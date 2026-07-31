@@ -406,18 +406,7 @@
     <center><h2 class="title is-3 section-title">Abstract</h2></center>
     <div class="abstract-block">
       <p>
-        While 3D Gaussian Splatting has achieved remarkable success in photorealistic and efficient rendering,
-        rigging and animating objects with arbitrary skeleton topologies using this representation remains a
-        formidable task. Existing methods are mainly mesh-based technologies that cannot be directly applied to
-        discrete 3D Gaussian primitives. Moreover, no high-quality 3D Gaussian rigging datasets exist. Therefore,
-        we propose <b>G-Skin</b>, a novel generative skinning framework designed for expressive and high-fidelity
-        3D Gaussian animation. To circumvent this 3D data scarcity, we introduce a skeleton-controllable image
-        generation model leveraging 2D vision foundation models to distill powerful motion priors into pseudo-guidance.
-        Guided by these priors, we formulate an optimization pipeline constrained by geometry-aware regularizations,
-        which stabilizes the learning process and ensures smooth, structurally coherent skinning weights. G-Skin also
-        generalizes flexibly to the augmented variants of 3D Gaussian representation designed to mitigate
-        animation-induced rendering artifacts. Extensive experiments validate the effectiveness of our approach,
-        demonstrating clear advantages over state-of-the-art methods.
+        3D Gaussian Splatting has achieved remarkable success in photorealistic and efficient rendering, leading to a rapid increase in 3D assets represented by 3D Gaussian primitives. Directly rigging these assets with arbitrary skeleton topologies is highly desirable. However, training a feed-forward skinning framework is infeasible due to the lack of high-quality 3D Gaussian rigging datasets. An alternative solution is to transfer mesh-based techniques to 3D Gaussian-based representation, but 3D Gaussian primitives are not restricted to the surface and lack explicit topological connectivity. Moreover, this kind of method suffers from poor generalization to unseen data due to its strong dependence on training data, while acquiring high-quality rigging data is prohibitively expensive. To address this challenging problem, we propose <b>G-Skin</b>, a novel generative skinning framework designed for expressive and high-fidelity animation with 3D Gaussian representation. To overcome this 3D data scarcity, we introduce a skeleton-controllable image generation model leveraging 2D vision foundation models to distill powerful motion priors into pseudo-guidance. Guided by these priors, we formulate an optimization pipeline incorporating geometry-aware regularizations, which stabilizes the learning process and ensures smooth, structurally coherent skinning weights. G-Skin also generalizes flexibly to the augmented variants of 3D Gaussian representation designed to mitigate animation-induced rendering artifacts. Extensive experiments validate the effectiveness of our approach, demonstrating clear advantages over state-of-the-art methods.
       </p>
     </div>
   </div>
